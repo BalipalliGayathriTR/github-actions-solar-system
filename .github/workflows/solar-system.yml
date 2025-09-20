@@ -61,10 +61,10 @@ jobs:
           run: npm install
     
         - name: Unit Testing
+          continue-on-error: true
           run: npm run coverage
           
         - name: Archive Test Result
-          continue-on-error: true
           uses: actions/upload-artifact@v4
           with:
             name: Code-Coverage-Result
@@ -74,7 +74,6 @@ jobs:
     docker:
         name: docker
         needs: [unit-testing, code-coverage]
-        if: ${{ always() }}
         permissions:
           packages: write
         runs-on: ubuntu-latest
@@ -95,7 +94,8 @@ jobs:
              context: .
              push: true
              tags: |
-               ghcr.io/BalipalliGayathriTR/github-actions-solar-system/solar-system:${{github['sha']}}
+               ghcr.io/balipalligayathritr/github-actions-solar-system/solar-system:${{github['sha']}}
+
 
 
 
