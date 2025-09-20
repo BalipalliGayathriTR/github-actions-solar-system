@@ -28,11 +28,9 @@ jobs:
         - name: Cache NPM dependencies
           id: cache-npm
           uses: actions/cache@v4
-          env:
-            cache-name: cache-node-modules
           with:
               path: ~/.npm
-              key: ${{ runner.os }}-node-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+              key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
               
         - name: Install Dependencies
           run: npm install
@@ -94,6 +92,7 @@ jobs:
              push: true
              images: |
                ghcr.io/${{ github.repository.repository_owner }}/solar-system:${{github['sha']}}
+
 
 
 
