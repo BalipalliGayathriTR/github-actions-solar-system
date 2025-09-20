@@ -95,7 +95,8 @@ jobs:
              context: .
              push: true
              tags: |
-               ghcr.io/${{github.repository}}/solar-system:${{github['sha']}}
+               ghcr.io/BalipalliGayathriTR/github-actions-solar-system/solar-system:${{github['sha']}}
+
 
 
 
